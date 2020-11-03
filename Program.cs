@@ -25,7 +25,22 @@ namespace RPG
 
             foreach (Monstre monstre in monstres)
             {
-                Combat.combattre(joueur, monstre);
+                Console.WriteLine("Un "+monstre.Nom+" ennemi se trouve sur votre chemin.");
+                Console.WriteLine("A : Combat automatique | M : Combat manuel");
+                string playerChoice = Console.ReadLine();
+                switch(playerChoice)
+                {
+                case "A":
+                    Combat.combattreAuto(joueur, monstre);
+                    break;
+                case "M":
+                    Combat.combattreManuel(joueur, monstre);
+                    break;
+                default:
+                    Console.WriteLine("A : Combat automatique | M : Combat manuel");
+                    playerChoice = Console.ReadLine();
+                    continue;
+                }
             }
         }
     }
